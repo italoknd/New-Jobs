@@ -1,6 +1,6 @@
 <template>
   <div class="job-list">
-    <p>Ordered by: {{ order }}</p>
+    <p>Ordered by: {{ props.order }}</p>
     <ul>
       <li v-for="{ title, location, salary, id } in jobs" :key="id">
         <h2>{{ title }} in {{ location }}</h2>
@@ -35,7 +35,7 @@ const props = defineProps({
     type: String as PropType<OrderTerm>
   }
 });
-const { jobs, order } = props;
+const { jobs } = props;
 
 //FUNCTIONS
 const formatValue = (val: StrNum): string => {
