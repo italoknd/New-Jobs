@@ -2,7 +2,7 @@
   <div class="job-list">
     <p>Ordered by: {{ props.order }}</p>
     <ul>
-      <li v-for="{ title, location, salary, id } in jobs" :key="id">
+      <li v-for="{ title, location, salary, id } in orderedJobs" :key="id">
         <h2>{{ title }} in {{ location }}</h2>
         <div class="salary">
           <p>{{ formatValue(salary) }}</p>
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from "vue";
+import { PropType, computed } from "vue";
 import Job from "../types/Job";
 import OrderTerm from "../types/OrderTerm";
 import StrNum from "../types/StrNum";
@@ -37,6 +37,12 @@ const props = defineProps({
 });
 const { jobs } = props;
 
+//SPECIAL FUNCTIONS
+const orderedJobs = computed(() => {
+  return [...props.jobs].sort((a: Job, b: Job) => {
+    return a[props.order] > b[props.order] ? 1 : -1;
+  });
+});
 //FUNCTIONS
 const formatValue = (val: StrNum): string => {
   return val.toLocaleString("pt-BR", {
@@ -50,6 +56,11 @@ const formatValue = (val: StrNum): string => {
 .job-list {
   max-width: 960px;
   margin: 40px auto;
+}
+
+.job-list > p{
+  color: white;
+  font-size: 20px;
 }
 
 .job-list ul {
@@ -80,5 +91,15 @@ const formatValue = (val: StrNum): string => {
   color: #17bf66;
   font-weight: bold;
   margin: 10px 4px;
+}
+
+ul > li {
+  transition: .5s;
+}
+
+ul > li:hover{
+  transform: scale(1.05);
+  box-shadow: 9px 9px 7px rgba(0, 0, 0, 0.377);
+  cursor: pointer;
 }
 </style>

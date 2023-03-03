@@ -49,13 +49,53 @@ const handleClick = (term: OrderTerm) => {
 
 <template>
   <div>
-    <div>
-      <button @click="handleClick('title')">Order by title</button>
-      <button @click="handleClick('salary')">Order by salary</button>
-      <button @click="handleClick('location')">Order by location</button>
-    </div>
+    <header>
+      <div class="title">
+        <h1>Newest Jobs!</h1>
+        <p>Everyday a new job and a new opportunite for you!</p>
+      </div>
+      <div class="order">
+        <button @click="handleClick('title')">Order by title</button>
+        <button @click="handleClick('salary')">Order by salary</button>
+        <button @click="handleClick('location')">Order by location</button>
+      </div>
+    </header>
     <JobList :jobs="jobs" :order="order" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.title{
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  max-width: 960px;
+  margin: 10px auto 0 auto;
+}
+
+header {
+  text-align: center;
+}
+
+header .order {
+  margin-top: 20px;
+}
+
+button {
+  margin: 0 10px;
+  color: #fff;
+  border: 2px solid #22c572;
+  background: #22c572;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.5s;
+  box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.329);
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 4.5px 4.5px 5px rgba(0, 0, 0, 0.329);
+}
+</style>
