@@ -1,7 +1,7 @@
 <template>
   <div class="job-list">
     <p>Ordered by: {{ props.order }}</p>
-    <ul>
+    <transition-group name="list" tag="ul">
       <li v-for="{ title, location, salary, id } in orderedJobs" :key="id">
         <h2>{{ title }} in {{ location }}</h2>
         <div class="salary">
@@ -14,7 +14,7 @@
           iusto! Accusamus quia recusandae eius.
         </div>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -101,5 +101,9 @@ ul > li:hover{
   transform: scale(1.05);
   box-shadow: 9px 9px 7px rgba(0, 0, 0, 0.377);
   cursor: pointer;
+}
+
+.list{
+  transition: all 1s;
 }
 </style>
