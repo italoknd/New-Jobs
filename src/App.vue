@@ -18,23 +18,23 @@ const jobs = ref<IJob[]>([
   {
     title: "Software Developer",
     location: "New York City",
-    salary: 7500,
+    salary: 7500.0,
     id: 1
   },
   {
     title: "Butler",
     location: "Michigan",
-    salary: 4800,
-    id: 1
+    salary: 12500.0,
+    id: 2
   },
   {
-    title: "farm-worker",
+    title: "Farm-worker",
     location: "lon lon ranch",
     salary: 5800.0,
     id: 2
   },
-  {
-    title: "quarryman",
+  { 
+    title: "Quarryman",
     location: "death mountain",
     salary: 7000.0,
     id: 3
