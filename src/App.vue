@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "@vue/reactivity";
+import { ref } from "vue";
 import IJob from "./types/Job";
 import OrderTerm from "./types/OrderTerm";
 import JobList from "./components/JobList.vue";
